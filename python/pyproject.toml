@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "hubspotclient"
-version = "0.0.1.28"
+name = "hubspotclientluca"
+version = "0.0.2"
 description = "Gen3 Hubspot Client"
 authors = ["CTDS UChicago <lgraglia@uchicago.edu>"]
 
