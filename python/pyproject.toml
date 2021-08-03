@@ -3,6 +3,12 @@ name = "hubspotclient"
 version = "0.0.2"
 description = "Gen3 Hubspot Client"
 authors = ["CTDS UChicago <lgraglia@uchicago.edu>"]
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/chicagopcdc/hubspotclient"
+include = [
+  "NOTICE",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
