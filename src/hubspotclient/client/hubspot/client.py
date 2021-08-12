@@ -5,7 +5,7 @@ hubspot.
 
 import httpx
 from os import environ
-from json import dumps
+import json
 
 try:
     import urllib.parse as urllib
@@ -34,14 +34,14 @@ class HubspotClient(BaseHubspotClient):
     client_cls = SyncClient
 
 
-    async def get_contacts_by_committee(self, committee, **kwargs):
+    def get_contacts_by_committee(self, committee, **kwargs):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
         if bool(environ.get('GEN3_DEBUG')):
             data = {
-            "total": "2",
-            "results": [
+                "total": "2",
+                "results": [
                     {
                         "id": "9601",
                         "properties": {
@@ -66,14 +66,14 @@ class HubspotClient(BaseHubspotClient):
                     }
                 ]
             }
-            return json.dumps(data)
+            return data
         
         ### NORMAL HANDLING
         
-        return super().get_contacts_by_committee(committee, kwargs)
+        return await super().get_contacts_by_committee(committee, kwargs)
 
 
-    async def get_contact_by_email(self, email, hubspot_id=None, **kwargs):
+    def get_contact_by_email(self, email, hubspot_id=None, **kwargs):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
@@ -106,14 +106,14 @@ class HubspotClient(BaseHubspotClient):
                     "results": []
                 }
             
-            return json.dumps(data)
+            return data
 
         ### Normal Handling
 
-        return super().get_contact_by_email(email, hubspot_id, kwargs)
+        return await super().get_contact_by_email(email, hubspot_id, kwargs)
 
 
-    async def update_contact(self, contact_id, property_json):
+    def update_contact(self, contact_id, property_json):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
@@ -147,8 +147,9 @@ class HubspotClient(BaseHubspotClient):
                     "results": []
                 }
         
-            return json.dumps(data)
+            return data
         
         ### Normal Handling
 
-        return super().update_contact(contact_id, property_json)
+        return await super().update_contact(contact_id, property_json)
+        
