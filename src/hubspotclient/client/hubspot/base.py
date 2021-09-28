@@ -6,7 +6,6 @@ Base classes for interfacing with the Hubspot service for hubspot. Please use
 
 import inspect
 import json
-from json import dumps
 from collections import deque
 from urllib.parse import quote
 
@@ -274,7 +273,9 @@ class BaseHubspotClient(CrmClient):
             }],
             "properties": ["firstname", "lastname", "institution"]
         }
-        return await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
+        ret_data = await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
+        json_data = json.loads(ret_data.decode('utf-8'))
+        return json_data
         
     @maybe_sync
     async def get_contacts_by_committee(self, committee, **kwargs):
@@ -292,7 +293,9 @@ class BaseHubspotClient(CrmClient):
             }],
             "properties": ["email", "disease_group_executive_committee"]
         }
-        return await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
+        ret_data = await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
+        json_data = json.loads(ret_data.decode('utf-8'))
+        return json_data
 
     @maybe_sync
     async def create_contact(self, property_json):
@@ -381,7 +384,10 @@ class BaseHubspotClient(CrmClient):
             }],
             "properties": ["approval_committees"]
         }
-        return await self.post(url=self._companies_url + "/search", json=data, **kwargs)
+        ret_data =  await self.post(url=self._companies_url + "/search", json=data, **kwargs)
+        json_data = json.loads(ret_data.decode('utf-8'))
+        return json_data
+
         # if response.code == 404:
         #     return None
         # if not response.successful:
