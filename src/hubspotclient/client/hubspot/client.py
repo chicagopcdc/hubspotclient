@@ -47,7 +47,7 @@ class HubspotClient(BaseHubspotClient):
                         "properties": {
                             "firstname": "Luca",
                             "lastname": "Graglia",
-                            "email": "lgraglia@uchicago.edu",
+                            "email": "graglia01@gmail.com",
                             "disease_group_executive_committee": "FAKE Executive Committee Member"
                         },
                         "createdAt": "2019-12-18T03:30:17.883Z",
@@ -70,7 +70,7 @@ class HubspotClient(BaseHubspotClient):
         
         ### NORMAL HANDLING
         
-        return super().get_contacts_by_committee(self, committee, kwargs).json
+        return super(HubspotClient, self).get_contacts_by_committee(committee, kwargs).json
 
 
     def get_contact_by_email(self, email, hubspot_id=None, **kwargs):
@@ -80,7 +80,7 @@ class HubspotClient(BaseHubspotClient):
         if bool(environ.get('HUBSPOT_DEBUG')):
             data = {}
 
-            if email == "lgraglia@uchicago.edu":
+            if email == "graglia01@gmail.com":
                 data = {
                     "total": "1",
                     "results": [{
@@ -110,7 +110,7 @@ class HubspotClient(BaseHubspotClient):
 
         ### Normal Handling
 
-        return super().get_contact_by_email(self, email, hubspot_id, kwargs)
+        return super(HubspotClient, self).get_contact_by_email(email, hubspot_id, kwargs)
 
 
     def update_contact(self, contact_id, property_json):
@@ -151,5 +151,5 @@ class HubspotClient(BaseHubspotClient):
         
         ### Normal Handling
 
-        return super().update_contact(self, contact_id, property_json)
+        return super(HubspotClient, self).update_contact(contact_id, property_json)
         
