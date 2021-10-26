@@ -38,7 +38,7 @@ class HubspotClient(BaseHubspotClient):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
-        if bool(environ.get('HUBSPOT_DEBUG')):
+        if environ.get('HUBSPOT_DEBUG', False).lower() == "true":
             data = {
                 "total": "2",
                 "results": [
@@ -77,7 +77,7 @@ class HubspotClient(BaseHubspotClient):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
-        if bool(environ.get('HUBSPOT_DEBUG')):
+        if environ.get('HUBSPOT_DEBUG', False).lower() == "true":
             data = {}
 
             if email == "graglia01@gmail.com":
@@ -117,7 +117,7 @@ class HubspotClient(BaseHubspotClient):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
-        if bool(environ.get('HUBSPOT_DEBUG')):
+        if environ.get('HUBSPOT_DEBUG', False).lower() == "true":
             data = {}
 
             if contact_id == "9601":
