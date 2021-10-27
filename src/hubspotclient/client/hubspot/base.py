@@ -273,9 +273,8 @@ class BaseHubspotClient(CrmClient):
             }],
             "properties": ["firstname", "lastname", "institution"]
         }
-        ret_data = await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
-        json_data = json.loads(ret_data.decode('utf-8'))
-        return json_data
+        response = await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
+        return response.json
         
     @maybe_sync
     async def get_contacts_by_committee(self, committee, **kwargs):
@@ -293,9 +292,8 @@ class BaseHubspotClient(CrmClient):
             }],
             "properties": ["email", "disease_group_executive_committee"]
         }
-        ret_data = await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
-        json_data = json.loads(ret_data.decode('utf-8'))
-        return json_data
+        response = await self.post(url=self._contacts_url + "/search", json=data, **kwargs)
+        return response.json
 
     @maybe_sync
     async def create_contact(self, property_json):

@@ -70,7 +70,7 @@ class HubspotClient(BaseHubspotClient):
         
         ### NORMAL HANDLING
         
-        return super(HubspotClient, self).get_contacts_by_committee(committee, kwargs).json
+        return super(HubspotClient, self).get_contacts_by_committee(committee, **kwargs)
 
 
     def get_contact_by_email(self, email, hubspot_id=None, **kwargs):
@@ -110,7 +110,7 @@ class HubspotClient(BaseHubspotClient):
 
         ### Normal Handling
 
-        return super(HubspotClient, self).get_contact_by_email(email, hubspot_id, kwargs)
+        return super(HubspotClient, self).get_contact_by_email(email, hubspot_id, **kwargs)
 
 
     def update_contact(self, contact_id, property_json):
