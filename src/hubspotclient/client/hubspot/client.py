@@ -13,6 +13,7 @@ except ImportError:
     import urllib
 
 from .base import BaseHubspotClient
+from pcdcutils.environment import is_env_enabled
 
 
 class SyncClient(httpx.Client):
@@ -38,7 +39,7 @@ class HubspotClient(BaseHubspotClient):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
-        if environ.get('HUBSPOT_DEBUG', '').lower() == 'true':
+        if is_env_enabled('HUBSPOT_DEBUG'):
             data = {
                 "total": "2",
                 "results": [
@@ -77,7 +78,7 @@ class HubspotClient(BaseHubspotClient):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
-        if environ.get('HUBSPOT_DEBUG', '').lower() == 'true':
+        if is_env_enabled('HUBSPOT_DEBUG'):
             data = {}
 
             if email == "graglia01@gmail.com":
@@ -117,7 +118,7 @@ class HubspotClient(BaseHubspotClient):
         """
         if DEBUG, return test data, otherwise, call the base method
         """
-        if environ.get('HUBSPOT_DEBUG', '').lower() == 'true':
+        if is_env_enabled('HUBSPOT_DEBUG'):
             data = {}
 
             if contact_id == "9601":

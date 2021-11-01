@@ -12,6 +12,8 @@ httpx = ">=0.12.1,<1.0.0"
 contextvars = { version = "^2.4", python = "<3.7" }
 six = "1.16.0"
 requests-toolbelt = "^0.9.1"
+pycryptodome = "3.9.8"
+pcdcutils = {git = "https://github.com/chicagopcdc/pcdcutils.git", rev = "0.1.1"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.2"
