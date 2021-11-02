@@ -4,8 +4,6 @@ hubspot.
 """
 
 import httpx
-from os import environ
-import json
 
 try:
     import urllib.parse as urllib
