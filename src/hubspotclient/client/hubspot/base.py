@@ -341,7 +341,7 @@ class BaseHubspotClient(CrmClient):
             )
             self.logger.error(msg)
             raise HubspotError(msg, response.code)
-        self.logger.info("created resource {}".format(property_json["email"]))
+        self.logger.debug("created resource {}".format(property_json["email"]))
         return response.json
 
 
@@ -359,11 +359,11 @@ class BaseHubspotClient(CrmClient):
         response = await self.patch(url=url, json=data)
         if not response.successful:
             msg = "could not update contact `{}` in Hubspot: {}".format(
-                path, response.error_msg
+                url, response.error_msg
             )
             self.logger.error(msg)
             raise HubspotError(msg, response.code)
-        self.logger.info("updated contact {}".format(contact_id))
+        self.logger.debug("updated contact {}".format(contact_id))
         return response.json
 
     @maybe_sync
@@ -382,9 +382,8 @@ class BaseHubspotClient(CrmClient):
             }],
             "properties": ["approval_committees"]
         }
-        ret_data =  await self.post(url=self._companies_url + "/search", json=data, **kwargs)
-        json_data = json.loads(ret_data.decode('utf-8'))
-        return json_data
+        response =  await self.post(url=self._companies_url + "/search", json=data, **kwargs)
+        return response.json
 
         # if response.code == 404:
         #     return None
