@@ -447,8 +447,8 @@ pycryptodome = "3.19.0"
 [package.source]
 type = "git"
 url = "https://github.com/chicagopcdc/pcdcutils.git"
-reference = "pcdc_dev"
-resolved_reference = "21019ec2e339da48ae4751e229d781e7b461a871"
+reference = "0.1.3"
+resolved_reference = "eb3a0b84016c74b334f60a496a76140ee636b780"
 
 [[package]]
 name = "pluggy"
@@ -711,4 +711,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4.0.0"
-content-hash = "76d26af5db55ceb1e26bb6a318df2156ee2f778f0eb17d70508cb517bab518d6"
+content-hash = "7f3f8c7ce431efbf73fcf5150a35f32090d61699519604aac245f6f8e0d94873"
